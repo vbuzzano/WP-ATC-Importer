@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by mazuki (darksiderg) -->
+<xs:schema xmlns="http://www.allthecontent.com/xml/delivery/generic/contents" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.allthecontent.com/xml/delivery/generic/contents" elementFormDefault="qualified" version="1.0">
+	<xs:element name="allthecontent">
+		<xs:annotation>
+			<xs:documentation>
+Author: Vincent Buzzano 
+vincent.buzzano@gmail.com
+
+Version: 1.0
+
+Changelog:
+- V 1.0 -  ( 2011-05-17 )
+  - initial release
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="content" nillable="false" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="title" type="xs:string" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Content's title</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="description" type="xs:string" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Content's description</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="credits" type="xs:string" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Content's credits and copyright</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="pubdate" type="xs:dateTime" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Content's publication date</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="lang" nillable="true">
+								<xs:annotation>
+									<xs:documentation>Content's language name</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="code" type="TYPE_LANGUAGE" use="required">
+												<xs:annotation>
+													<xs:documentation>Lanugage code (ISO639a)
+Unique identifier for the content type</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="contenttype" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Content type name</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="code" type="TYPE_CODE" use="required">
+												<xs:annotation>
+													<xs:documentation>Content type code 
+Unique identifier for the content type</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="coremedia" nillable="true">
+								<xs:annotation>
+									<xs:documentation>Content core media name</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="code" type="TYPE_CODE" use="required">
+												<xs:annotation>
+													<xs:documentation>Content's core media code (text, video, audio, ...) 
+Unique identifier for this core media</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="format" nillable="true">
+								<xs:annotation>
+									<xs:documentation>Content format name</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="code" type="TYPE_CODE" use="required">
+												<xs:annotation>
+													<xs:documentation>Content's format code (full, sms, short, ...) 
+Unique identifier for this core media</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="theme" nillable="true" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Content theme name
+Content can be included one or more themes</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="code" type="TYPE_CODE" use="required">
+												<xs:annotation>
+													<xs:documentation>Content themes code (music, hightech, ...) 
+Unique identifier for this theme</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="license">
+								<xs:annotation>
+									<xs:documentation>Content license infos</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="modification">
+											<xs:annotation>
+												<xs:documentation>Content modification rights</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="allowed" type="xs:boolean" use="required">
+													<xs:annotation>
+														<xs:documentation>Modification is allowed or not</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="multimediatisation">
+											<xs:annotation>
+												<xs:documentation>content multimediatisation rights</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="allowed" type="xs:boolean" use="required">
+													<xs:annotation>
+														<xs:documentation>Multimediatisation is allowed or not</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="localisation">
+											<xs:annotation>
+												<xs:documentation>Content localisation rights</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="allowed" type="xs:boolean" use="required">
+													<xs:annotation>
+														<xs:documentation>Localisation is allowed or not</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="distribution">
+											<xs:annotation>
+												<xs:documentation>Content distribution rights</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:attribute name="allowed" type="xs:boolean" use="required">
+													<xs:annotation>
+														<xs:documentation>Distribution is allowed or not</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="keywords">
+								<xs:annotation>
+									<xs:documentation>Content's keywords</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="value" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Keyword list</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Content's indexation tag</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="value" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Tag's values list</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="code" type="TYPE_CODE" use="required">
+										<xs:annotation>
+											<xs:documentation>Tag Unique identifier</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="name" use="required">
+										<xs:annotation>
+											<xs:documentation>Tag Name</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="30"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="link" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Content's related urls</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="url" type="xs:anyURI" use="required">
+												<xs:annotation>
+													<xs:documentation>Link url</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="attachment" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Content's attachment.
+Some content may have illustration or any orther attachement</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="description" type="xs:string" nillable="true"/>
+										<xs:element name="credits" type="xs:string" nillable="true"/>
+									</xs:sequence>
+									<xs:attribute name="uid" type="TYPE_UID" use="required">
+										<xs:annotation>
+											<xs:documentation>Attachment Unique ID</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="type" type="TYPE_CODE" use="required">
+										<xs:annotation>
+											<xs:documentation>Attachment type (illustration)</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="format" type="TYPE_CODE" use="required">
+										<xs:annotation>
+											<xs:documentation>Attachment format (image, pdf, ...)</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="mimetype" type="xs:string" use="required">
+										<xs:annotation>
+											<xs:documentation>Attachment mimetype (image/jpeg, image/png, ...)</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+									<xs:attribute name="path" type="xs:string"/>
+									<xs:attribute name="filename" type="xs:string">
+										<xs:annotation>
+											<xs:documentation>Attachment file name</xs:documentation>
+										</xs:annotation>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element ref="item" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Content item</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="uid" type="TYPE_UID" use="required">
+							<xs:annotation>
+								<xs:documentation>Unique ID for this content</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="version" type="TYPE_VERSION" use="required">
+				<xs:annotation>
+					<xs:documentation>XML Format Version</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="created" type="xs:dateTime" use="required">
+				<xs:annotation>
+					<xs:documentation>XML Creation date</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="item">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="uid" type="TYPE_UID" use="required">
+						<xs:annotation>
+							<xs:documentation>Content item unique id</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="mimetype" type="xs:string" use="required">
+						<xs:annotation>
+							<xs:documentation>Content item mimetype</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="path" type="xs:string"/>
+					<xs:attribute name="filename" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Content item filename (if item is not embedded)</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="value">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="255"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:simpleType name="TYPE_VERSION">
+		<xs:restriction base="xs:double">
+			<xs:enumeration value="1.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TYPE_UID">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="24"/>
+			<xs:maxLength value="36"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TYPE_CODE">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="25"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TYPE_LANGUAGE">
+		<xs:restriction base="xs:language">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
